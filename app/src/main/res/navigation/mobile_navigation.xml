@@ -9,17 +9,17 @@
         android:id="@+id/navigation_contacts"
         android:name="com.milad.diver.ui.transactions.TransactionFragment"
         android:label="@string/title_contacts"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_transaction" />
 
     <fragment
         android:id="@+id/navigation_transaction"
         android:name="com.milad.diver.ui.contacts.ContactsFragment"
         android:label="@string/title_transaction"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_contacts" />
 
     <fragment
         android:id="@+id/navigation_setting"
         android:name="com.milad.diver.ui.setting.SettingFragment"
         android:label="@string/title_setting"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_setting" />
 </navigation>
