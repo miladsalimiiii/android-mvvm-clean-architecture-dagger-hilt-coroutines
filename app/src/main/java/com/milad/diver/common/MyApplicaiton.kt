@@ -5,6 +5,8 @@ import androidx.multidex.MultiDexApplication
 import com.facebook.stetho.Stetho
 import com.milad.diver.di.apiModule
 import com.milad.diver.di.databaseModule
+import com.milad.diver.di.repositoryModule
+import com.milad.diver.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -29,7 +31,9 @@ class MyApplication : MultiDexApplication() {
             modules(
                 listOf(
                     apiModule,
-                    databaseModule
+                    databaseModule,
+                    repositoryModule,
+                    viewModelModule
                     )
             )
         }

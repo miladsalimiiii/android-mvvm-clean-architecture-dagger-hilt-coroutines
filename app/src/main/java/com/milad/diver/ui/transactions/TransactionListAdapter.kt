@@ -18,6 +18,12 @@ class TransactionListAdapter(transactionList: ArrayList<Transaction>) :
         )
     }
 
+    fun updateData(transactionList:List<Transaction>){
+        mTransactionList= transactionList as ArrayList<Transaction>
+        notifyDataSetChanged()
+
+    }
+
     override fun getItemCount(): Int {
 
         return mTransactionList.size
