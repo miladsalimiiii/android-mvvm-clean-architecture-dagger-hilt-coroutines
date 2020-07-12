@@ -3,4 +3,11 @@
     <string name="title_contacts">مخاطبین</string>
     <string name="title_transaction">تراکنش ها</string>
     <string name="title_setting">تنظیمات</string>
+    <string name="transaction_search">جستجو</string>
+    <string name="transactionItem_requestMe">درخواست شما از</string>
+    <string name="transactionItem_requestHis">درخواست</string>
+    <string name="transactionItem_diverCharge">شارژ دایور</string>
+    <string name="transactionItem_DiverWithdraw">برداشت از دایور</string>
+    <string name="transactionItem_receive">دریافت از</string>
+    <string name="transactionItem_send">ارسال به</string>
 </resources>

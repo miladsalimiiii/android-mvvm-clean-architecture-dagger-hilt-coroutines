@@ -7,15 +7,17 @@
 
     <fragment
         android:id="@+id/navigation_contacts"
-        android:name="com.milad.diver.ui.transactions.TransactionFragment"
+        android:name="com.milad.diver.ui.contacts.ContactsFragment"
         android:label="@string/title_contacts"
-        tools:layout="@layout/fragment_transaction" />
+        tools:layout="@layout/fragment_contacts"
+       />
 
     <fragment
         android:id="@+id/navigation_transaction"
-        android:name="com.milad.diver.ui.contacts.ContactsFragment"
+        android:name="com.milad.diver.ui.transactions.TransactionFragment"
         android:label="@string/title_transaction"
-        tools:layout="@layout/fragment_contacts" />
+        tools:layout="@layout/fragment_transaction"
+       />
 
     <fragment
         android:id="@+id/navigation_setting"
