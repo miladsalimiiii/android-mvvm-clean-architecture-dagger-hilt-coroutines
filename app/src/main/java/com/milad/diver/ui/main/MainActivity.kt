@@ -18,8 +18,8 @@ class MainActivity : BaseActivity() {
         mNavController = findNavController(R.id.nav_host_fragment)
         mNavView.setupWithNavController(mNavController)
         val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_contacts,
             R.id.navigation_transaction,
+            R.id.navigation_contacts,
             R.id.navigation_setting
         ))
     }

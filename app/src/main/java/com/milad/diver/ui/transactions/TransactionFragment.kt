@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.milad.diver.R
+import com.milad.diver.ui.base.BaseFragment
 
-class TransactionFragment : Fragment() {
+class TransactionFragment : BaseFragment() {
 
     private lateinit var transactionViewModel: TransactionViewModel
 
@@ -19,11 +19,23 @@ class TransactionFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        transactionViewModel =
-                ViewModelProviders.of(this).get(TransactionViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
 
-        return root
+        return inflater.inflate(R.layout.fragment_transaction, container, false)
+    }
+
+    override fun initComponents() {
+
+    }
+
+    override fun initUiListeners() {
+
+    }
+
+    override fun initObservers() {
+
+    }
+
+    override fun updateToolbar() {
+
     }
 }
