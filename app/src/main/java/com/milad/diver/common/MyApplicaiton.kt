@@ -3,10 +3,7 @@ package com.milad.diver.common
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDexApplication
 import com.facebook.stetho.Stetho
-import com.milad.diver.di.apiModule
-import com.milad.diver.di.databaseModule
-import com.milad.diver.di.repositoryModule
-import com.milad.diver.di.viewModelModule
+import com.milad.diver.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -33,7 +30,8 @@ class MyApplication : MultiDexApplication() {
                     apiModule,
                     databaseModule,
                     repositoryModule,
-                    viewModelModule
+                    viewModelModule,
+                    utilModule
                     )
             )
         }
