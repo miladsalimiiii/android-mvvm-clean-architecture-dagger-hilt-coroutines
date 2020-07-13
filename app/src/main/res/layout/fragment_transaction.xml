@@ -26,7 +26,8 @@
         app:queryHint="@string/transaction_search"
         android:background="@color/colorBackgroundSearch"
         app:searchIcon="@drawable/icon_all_search"
-        android:theme="@style/search"
+        android:theme="@style/B2"
+        app:queryBackground="@null"
         />
     </androidx.cardview.widget.CardView>
     <androidx.recyclerview.widget.RecyclerView
