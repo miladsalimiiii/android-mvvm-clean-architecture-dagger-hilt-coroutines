@@ -9,11 +9,15 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.milad.diver.R
+import com.milad.diver.data.model.Information
 import com.milad.diver.data.model.Transaction
 import com.milad.diver.data.model.common.Status
 import com.milad.diver.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_transaction.*
+import kotlinx.android.synthetic.main.item_transaction.view.*
 import org.koin.android.ext.android.inject
 
 class TransactionFragment : BaseFragment() {
@@ -41,6 +45,22 @@ class TransactionFragment : BaseFragment() {
 
     }
 
+    private fun fixAmountAndProfileAvatar(information:Information){
+
+        appCompatView_transaction_balance.text=information.mBalance.toString()
+        setAvatar(information)
+    }
+
+    private fun setAvatar(information:Information){
+
+        Glide.with(this)
+            .load(information.mId)
+            .error(R.drawable.icon_all_emptyprofilepicture)
+            .apply(RequestOptions.circleCropTransform())
+            .into(imageview_transaction_profile)
+
+    }
+
     override fun initObservers() {
 
 
@@ -51,6 +71,7 @@ class TransactionFragment : BaseFragment() {
                 Status.SUCCESS -> {
                     mTransactionsList = it.data?.mTransactions!!
                     mAdapter.updateData(mTransactionsList)
+                    fixAmountAndProfileAvatar(it.data!!)
                 }
             }
         })

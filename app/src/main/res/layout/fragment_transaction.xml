@@ -209,7 +209,7 @@
     </androidx.cardview.widget.CardView>
 
     <RelativeLayout
-        android:layout_width="180dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content">
 
         <TextView
@@ -220,13 +220,12 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="12dp"
             android:gravity="start"
-            android:text="موجودی"
+            android:text="@string/transaction_balance"
             android:textAppearance="@style/B3"
             android:textColor="@color/colorWhite" />
     </RelativeLayout>
 
-    <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/cardview_transaction_amount"
         android:layout_width="180dp"
         android:layout_height="30dp"
@@ -241,10 +240,11 @@
         card_view:cardPreventCornerOverlap="false">
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatView_transaction_balance"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="1234512340000000123"
+            android:text="0.0"
             android:textColor="@color/colorWhite"
             app:autoSizeMaxTextSize="50sp"
             app:autoSizeMinTextSize="6sp"
@@ -267,15 +267,13 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="تومان"
+            android:text="@string/transaction_currency"
             android:textAppearance="@style/B3"
             android:textColor="@color/colorWhite" />
 
     </androidx.cardview.widget.CardView>
 
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageview_transaction_profile"
+    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_gravity="end"
@@ -283,7 +281,14 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         app:collapsedTarget="@id/profileimage_transaction_target"
-        app:elevation="8dp"
-        app:layout_behavior=".ui.util.CollapsingToolbarLayout" />
+        app:layout_behavior=".ui.util.CollapsingToolbarLayout"
+        card_view:cardBackgroundColor="@android:color/transparent"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="118dp">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageview_transaction_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.cardview.widget.CardView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
