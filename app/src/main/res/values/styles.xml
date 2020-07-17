@@ -1,8 +1,8 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorText</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="fontFamily">@font/iran_sans_medium</item>
@@ -13,6 +13,9 @@
     </style>
 
     <style name="H1">
+        <item name="android:textSize">30sp</item>
+    </style>
+    <style name="H2">
         <item name="android:textSize">18sp</item>
     </style>
     <style name="B1">
@@ -24,5 +27,12 @@
     <style name="B3">
         <item name="android:textSize">8sp</item>
     </style>
+
+    <style name="ToolbarStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/colorText</item>
+        <item name="android:actionMenuTextColor">#00000000</item>
+    </style>
+
 
 </resources>

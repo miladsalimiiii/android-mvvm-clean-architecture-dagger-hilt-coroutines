@@ -1,39 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.transactions.TransactionFragment">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="128dp"
+            android:fitsSystemWindows="true"
+            android:minHeight="56dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_transaction_backgroundtoolbar"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="pin" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_all_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin">
+
+                <Space
+                    android:id="@+id/imageplus_transaction_target"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="11dp" />
+
+                <LinearLayout
+                    android:layout_width="110dp"
+                    android:layout_height="30dp"
+                    android:orientation="vertical">
+
+                    <Space
+                        android:id="@+id/balancetextview_transaction_target"
+                        android:layout_width="110dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginLeft="4dp" />
+
+                    <Space
+                        android:id="@+id/currency_transaction_target"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="-10dp" />
+
+                </LinearLayout>
+
+                <Space
+                    android:id="@+id/requestbutton_collapsed_target"
+                    android:layout_width="40dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="160dp"
+                    android:layout_marginTop="12dp" />
+
+                <Space
+                    android:id="@+id/sendbutton_collapsed_target"
+                    android:layout_width="40dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="160dp"
+                    android:layout_marginTop="12dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:gravity="end">
+
+                    <Space
+                        android:id="@+id/profileimage_transaction_target"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp" />
+                </RelativeLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_transaction_search"
         android:layout_width="match_parent"
         android:layout_height="24dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="5dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="4dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
-        >
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView_transaction_search"
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:focusable="false"
-        app:iconifiedByDefault="false"
-        app:queryHint="@string/transaction_search"
-        android:background="@color/colorBackgroundSearch"
-        app:searchIcon="@drawable/icon_all_search"
-        android:theme="@style/B2"
-        app:queryBackground="@null"
-        />
+        android:layout_marginBottom="4dp"
+        android:visibility="gone"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView_transaction_search"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="@color/colorBackgroundSearch"
+            android:focusable="false"
+            android:theme="@style/B2"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@null"
+            app:queryHint="@string/transaction_search"
+            app:searchIcon="@drawable/icon_all_search" />
     </androidx.cardview.widget.CardView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_transaction_transactionsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/cardView_transaction_search"
-        />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_transaction_search" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="136dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="70dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="8dp"
+        app:collapsedTarget="@id/requestbutton_collapsed_target"
+        app:layout_behavior=".ui.util.CollapsingToolbarLayout">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/drawable_transaction_bluebackgroundbutton"
+            android:paddingStart="8dp"
+            android:paddingLeft="8dp"
+            android:paddingEnd="8dp"
+            android:text="@string/transaction_request"
+            android:textColor="@color/colorWhite"
+            app:autoSizeMaxTextSize="16sp"
+            app:autoSizeMinTextSize="6sp"
+            app:autoSizeStepGranularity="10sp"
+            app:autoSizeTextType="uniform" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="136dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginLeft="168dp"
+        android:layout_marginTop="70dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="8dp"
+        app:collapsedTarget="@id/sendbutton_collapsed_target"
+        app:layout_behavior=".ui.util.CollapsingToolbarLayout">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/drawable_transaction_greenbackgroundbutton"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/transaction_send"
+            android:textColor="@color/colorWhite"
+            app:autoSizeMaxTextSize="16sp"
+            app:autoSizeMinTextSize="6sp"
+            app:autoSizeStepGranularity="2sp"
+            app:autoSizeTextType="uniform"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="26dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="8dp"
+        app:collapsedTarget="@id/imageplus_transaction_target"
+        app:layout_behavior=".ui.util.CollapsingToolbarLayout">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/drawable_transaction_backgroundimage"
+            android:padding="5dp"
+            android:src="@drawable/icon_transaction_plus"
+            app:collapsedTarget="@id/imageplus_transaction_target"
+            app:layout_behavior=".ui.util.CollapsingToolbarLayout" />
+
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:layout_width="180dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textview_transaction_amount"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="12dp"
+            android:gravity="start"
+            android:text="موجودی"
+            android:textAppearance="@style/B3"
+            android:textColor="@color/colorWhite" />
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cardview_transaction_amount"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/textView_transaction_amount"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="26dp"
+        app:collapsedTarget="@id/balancetextview_transaction_target"
+        app:layout_behavior=".ui.util.CollapsingToolbarLayout"
+        card_view:cardBackgroundColor="@android:color/transparent"
+        card_view:cardElevation="119dp"
+        card_view:cardPreventCornerOverlap="false">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="1234512340000000123"
+            android:textColor="@color/colorWhite"
+            app:autoSizeMaxTextSize="50sp"
+            app:autoSizeMinTextSize="6sp"
+            app:autoSizeStepGranularity="2sp"
+            app:autoSizeTextType="uniform" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        app:collapsedTarget="@id/currency_transaction_target"
+        card_view:cardBackgroundColor="@android:color/transparent"
+        card_view:cardElevation="119dp"
+        card_view:layout_behavior=".ui.util.CollapsingToolbarLayout">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="تومان"
+            android:textAppearance="@style/B3"
+            android:textColor="@color/colorWhite" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_transaction_profile"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:collapsedTarget="@id/profileimage_transaction_target"
+        app:elevation="8dp"
+        app:layout_behavior=".ui.util.CollapsingToolbarLayout" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

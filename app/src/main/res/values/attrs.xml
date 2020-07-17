@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CollapsingImageBehavior">
+        <attr name="collapsedTarget" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="them">
+        <attr name="textColorError" format="reference" />
+    </declare-styleable>
+</resources>

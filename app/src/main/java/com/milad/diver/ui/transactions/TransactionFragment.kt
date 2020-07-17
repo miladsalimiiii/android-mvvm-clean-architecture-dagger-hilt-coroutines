@@ -1,6 +1,7 @@
 package com.milad.diver.ui.transactions
 
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,22 +18,21 @@ import org.koin.android.ext.android.inject
 
 class TransactionFragment : BaseFragment() {
 
-    private val mTransactionViewModel : TransactionViewModel by inject()
-    private lateinit var mTransactionsList:List<Transaction>
+    private val mTransactionViewModel: TransactionViewModel by inject()
+    private lateinit var mTransactionsList: List<Transaction>
     private lateinit var mLinearLayoutManager: LinearLayoutManager
-    private var mAdapter=TransactionListAdapter(ArrayList())
+    private var mAdapter = TransactionListAdapter(ArrayList())
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
 
         return inflater.inflate(R.layout.fragment_transaction, container, false)
     }
 
     override fun initComponents() {
-
         setUpRecyclerView()
         mTransactionViewModel.getTransactions()
     }
@@ -46,9 +46,10 @@ class TransactionFragment : BaseFragment() {
 
         mTransactionViewModel.mGetInformationLiveData.observe(this, Observer {
 
-            when(it.status){
+            when (it.status) {
 
-                Status.SUCCESS->{mTransactionsList= it.data?.mTransactions!!
+                Status.SUCCESS -> {
+                    mTransactionsList = it.data?.mTransactions!!
                     mAdapter.updateData(mTransactionsList)
                 }
             }
@@ -59,21 +60,21 @@ class TransactionFragment : BaseFragment() {
 
     }
 
-    fun setUpRecyclerView(){
+    fun setUpRecyclerView() {
 
-        mLinearLayoutManager= LinearLayoutManager(context)
-        recyclerview_transaction_transactionsList.layoutManager=mLinearLayoutManager
-        recyclerview_transaction_transactionsList.adapter=mAdapter
-        val dividerItemDecoration=DividerItemDecoration(context,DividerItemDecoration.VERTICAL)
-        context?.let {context->
-            ContextCompat.getDrawable(context,R.drawable.drawable_all_dividerforrecyclerview)?.let {drawable->
-                dividerItemDecoration.setDrawable(
-                    drawable
-                )
-            }
+        mLinearLayoutManager = LinearLayoutManager(context)
+        recyclerview_transaction_transactionsList.layoutManager = mLinearLayoutManager
+        recyclerview_transaction_transactionsList.adapter = mAdapter
+        val dividerItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        context?.let { context ->
+            ContextCompat.getDrawable(context, R.drawable.drawable_all_dividerforrecyclerview)
+                ?.let { drawable ->
+                    dividerItemDecoration.setDrawable(
+                        drawable
+                    )
+                }
         }
         recyclerview_transaction_transactionsList.addItemDecoration(dividerItemDecoration)
-
 
 
     }
