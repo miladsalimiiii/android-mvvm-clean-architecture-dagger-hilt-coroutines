@@ -15,6 +15,10 @@
     <string name="transactionItem_receive">دریافت از</string>
     <string name="transactionItem_send">ارسال به</string>
     <string name="transactionItem_error">خطا</string>
+    <string name="transaction_request">درخواست</string>
+    <string name="transaction_send">ارسال</string>
+    <string name="transaction_balance">موجودی</string>
+    <string name="transaction_currency">تومان</string>
 
 
 </resources>

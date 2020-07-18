@@ -74,7 +74,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="4dp"
         android:text="+"
-        android:textAppearance="@style/H1"
+        android:textAppearance="@style/H2"
         android:textColor="@color/colorTextPositive"
         app:layout_constraintStart_toStartOf="@id/textView_transaction_currency"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -86,7 +86,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="4dp"
         android:text="250000"
-        android:textAppearance="@style/H1"
+        android:textAppearance="@style/H2"
         android:textColor="@color/colorTextPositive"
         app:layout_constraintStart_toEndOf="@id/textView_transaction_plus"
         app:layout_constraintTop_toTopOf="parent" />

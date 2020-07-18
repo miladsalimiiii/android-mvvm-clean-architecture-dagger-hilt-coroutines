@@ -12,4 +12,8 @@
     <color name="colorTextLightest">#C8C8C8</color>
     <color name="colorTextHint">#F93737</color>
     <color name="colorTextPositive">#0AB571</color>
+
+    <color name="colorBlue">#334CD2</color>
+
+    <color name="colorWhite">#FFFFFF</color>
 </resources>
