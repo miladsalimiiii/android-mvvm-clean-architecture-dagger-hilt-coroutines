@@ -58,7 +58,6 @@ class TransactionFragment : BaseFragment() {
             .error(R.drawable.icon_all_emptyprofilepicture)
             .apply(RequestOptions.circleCropTransform())
             .into(imageview_transaction_profile)
-
     }
 
     override fun initObservers() {
@@ -81,7 +80,7 @@ class TransactionFragment : BaseFragment() {
 
     }
 
-    fun setUpRecyclerView() {
+   private fun setUpRecyclerView() {
 
         mLinearLayoutManager = LinearLayoutManager(context)
         recyclerview_transaction_transactionsList.layoutManager = mLinearLayoutManager
@@ -96,7 +95,10 @@ class TransactionFragment : BaseFragment() {
                 }
         }
         recyclerview_transaction_transactionsList.addItemDecoration(dividerItemDecoration)
+    }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        mTransactionViewModel.onCleared()
     }
 }
