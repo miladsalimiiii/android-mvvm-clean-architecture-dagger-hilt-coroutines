@@ -4,7 +4,7 @@ import com.milad.diver.data.webservice.ApiClient
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 
-private const val BASE_URL="http://api-develop.diver.ir/app/user/"
+private const val BASE_URL="https://thereportoftheweek-api.herokuapp.com/"
 
 val apiModule= module {
 

@@ -7,6 +7,6 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 
 interface ApiInterface {
-    @GET("home?last_get_time=20200102000000")
-    fun getInformation(@Header("Authorization") header: String): Single<Response<Information>>
+    @GET("reports")
+    fun getInformation(): Single<Response<Array<Information>>>
 }

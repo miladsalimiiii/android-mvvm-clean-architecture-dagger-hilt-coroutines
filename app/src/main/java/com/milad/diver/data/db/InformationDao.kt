@@ -12,9 +12,9 @@ import retrofit2.http.GET
 @Dao
 interface InformationDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertInfoIntoDB(information:Information):Completable
-
-    @Query("SELECT * FROM information ORDER BY id ASC LIMIT 1")
-    fun getInfoFromDB():Single<Information>
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    fun insertInfoIntoDB(information:Information):Completable
+//
+//    @Query("SELECT * FROM information ORDER BY id ASC LIMIT 1")
+//    fun getInfoFromDB():Single<Information>
 }

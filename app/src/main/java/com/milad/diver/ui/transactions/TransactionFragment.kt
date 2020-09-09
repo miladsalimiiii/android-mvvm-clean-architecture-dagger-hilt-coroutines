@@ -1,7 +1,6 @@
 package com.milad.diver.ui.transactions
 
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,17 +12,15 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.milad.diver.R
 import com.milad.diver.data.model.Information
-import com.milad.diver.data.model.Transaction
 import com.milad.diver.data.model.common.Status
 import com.milad.diver.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_transaction.*
-import kotlinx.android.synthetic.main.item_transaction.view.*
 import org.koin.android.ext.android.inject
 
 class TransactionFragment : BaseFragment() {
 
     private val mTransactionViewModel: TransactionViewModel by inject()
-    private lateinit var mTransactionsList: List<Transaction>
+    private lateinit var mTransactionsList: List<Information>
     private lateinit var mLinearLayoutManager: LinearLayoutManager
     private var mAdapter = TransactionListAdapter(ArrayList())
 
@@ -47,7 +44,7 @@ class TransactionFragment : BaseFragment() {
 
     private fun fixAmountAndProfileAvatar(information:Information){
 
-        appCompatView_transaction_balance.text=information.mBalance.toString()
+       // appCompatView_transaction_balance.text=information.mBalance.toString()
         setAvatar(information)
     }
 
@@ -68,9 +65,9 @@ class TransactionFragment : BaseFragment() {
             when (it.status) {
 
                 Status.SUCCESS -> {
-                    mTransactionsList = it.data?.mTransactions!!
+                    mTransactionsList = it.data?.toList()!!
                     mAdapter.updateData(mTransactionsList)
-                    fixAmountAndProfileAvatar(it.data!!)
+                    //fixAmountAndProfileAvatar(it.data!!)
                 }
             }
         })
@@ -99,6 +96,6 @@ class TransactionFragment : BaseFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        mTransactionViewModel.onCleared()
+       // mTransactionViewModel.onCleared()
     }
 }

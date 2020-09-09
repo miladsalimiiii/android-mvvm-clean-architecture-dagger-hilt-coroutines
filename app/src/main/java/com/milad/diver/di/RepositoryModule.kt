@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 val repositoryModule= module {
 
-    factory { InformationRepositoryImle(get(),get()) }
+    factory { InformationRepositoryImle(get()) }
 }
