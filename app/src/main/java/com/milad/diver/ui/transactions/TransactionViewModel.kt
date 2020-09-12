@@ -1,17 +1,16 @@
 package com.milad.diver.ui.transactions
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.milad.diver.data.model.Information
 import com.milad.diver.data.model.common.MyResponse
 import com.milad.diver.data.repository.InformationRepositoryImle
 import com.milad.diver.ui.base.BaseViewModel
-import com.milad.diver.ui.util.UtilInternetConnection
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class TransactionViewModel(
-    var informationRepository: InformationRepositoryImle,
-    var utilInternetConnection: UtilInternetConnection
+class TransactionViewModel @ViewModelInject constructor(
+    var informationRepository: InformationRepositoryImle
 ) : BaseViewModel() {
 
     var mGetInformationLiveData = MutableLiveData<MyResponse<Array<Information>>>()

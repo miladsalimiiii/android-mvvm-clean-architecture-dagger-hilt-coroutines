@@ -5,19 +5,16 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.milad.diver.R
 import com.milad.diver.data.model.Information
-import com.milad.diver.ui.util.UtilDateAndTime
 import kotlinx.android.synthetic.main.item_transaction.view.*
-import org.koin.core.KoinComponent
-import org.koin.core.inject
 
 private const val IMAGE_TYPE="drawable"
 private const val CHARGE_DIVER_ICON_NAME="icon_transaction_chargediver"
 private const val WITHDRAW_DIVER_ICON_NAME="icon_transaction_withdrawdiver"
 
-class TransactionViewHolder(itemView: View) : BaseViewHolder(itemView), KoinComponent {
+class TransactionViewHolder(itemView: View) : BaseViewHolder(itemView) {
 
 
-    private val mUtilDateAndTime: UtilDateAndTime by inject()
+   // private val mUtilDateAndTime: UtilDateAndTime by inject()
     private lateinit var mTransactionList: List<Information>
 
     override fun clear() {}

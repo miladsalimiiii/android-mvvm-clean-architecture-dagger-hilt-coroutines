@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,12 +15,13 @@ import com.milad.diver.R
 import com.milad.diver.data.model.Information
 import com.milad.diver.data.model.common.Status
 import com.milad.diver.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_transaction.*
-import org.koin.android.ext.android.inject
 
+@AndroidEntryPoint
 class TransactionFragment : BaseFragment() {
 
-    private val mTransactionViewModel: TransactionViewModel by inject()
+    private val mTransactionViewModel: TransactionViewModel by viewModels()
     private lateinit var mTransactionsList: List<Information>
     private lateinit var mLinearLayoutManager: LinearLayoutManager
     private var mAdapter = TransactionListAdapter(ArrayList())
