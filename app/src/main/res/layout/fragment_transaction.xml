@@ -53,7 +53,7 @@
 
                     <Space
                         android:id="@+id/currency_transaction_target"
-                        android:layout_width="20dp"
+                        android:layout_width="30dp"
                         android:layout_height="20dp"
                         android:layout_marginStart="4dp"
                         android:layout_marginLeft="4dp"
@@ -148,7 +148,7 @@
             android:paddingStart="8dp"
             android:paddingLeft="8dp"
             android:paddingEnd="8dp"
-            android:text="@string/transaction_request"
+            android:text="CLICKONE"
             android:textColor="@color/colorWhite"
             app:autoSizeMaxTextSize="16sp"
             app:autoSizeMinTextSize="6sp"
@@ -174,14 +174,12 @@
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
             android:paddingEnd="10dp"
-            android:text="@string/transaction_send"
+            android:text="ClickTWO"
             android:textColor="@color/colorWhite"
             app:autoSizeMaxTextSize="16sp"
             app:autoSizeMinTextSize="6sp"
             app:autoSizeStepGranularity="2sp"
-            app:autoSizeTextType="uniform"
-
-            />
+            app:autoSizeTextType="uniform"/>
     </androidx.cardview.widget.CardView>
 
 
@@ -220,7 +218,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="12dp"
             android:gravity="start"
-            android:text="@string/transaction_balance"
+            android:text="TEST"
             android:textAppearance="@style/B3"
             android:textColor="@color/colorWhite" />
     </RelativeLayout>
@@ -267,7 +265,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/transaction_currency"
+            android:text="TEST"
             android:textAppearance="@style/B3"
             android:textColor="@color/colorWhite" />
 

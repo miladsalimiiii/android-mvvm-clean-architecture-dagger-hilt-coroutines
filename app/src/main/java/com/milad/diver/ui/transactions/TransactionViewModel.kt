@@ -1,39 +1,41 @@
 package com.milad.diver.ui.transactions
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
-import com.milad.diver.data.model.Information
+import com.milad.diver.data.model.User
 import com.milad.diver.data.model.common.MyResponse
-import com.milad.diver.data.repository.InformationRepository
+import com.milad.diver.data.repository.InformationRepositoryImle
 import com.milad.diver.ui.base.BaseViewModel
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
-class TransactionViewModel(var informationRepository: InformationRepository) : BaseViewModel() {
+class TransactionViewModel @ViewModelInject constructor(
+   private var informationRepository: InformationRepositoryImle
+) : BaseViewModel() , CoroutineScope by MainScope(){
 
-     var mGetInformationLiveData=MutableLiveData<MyResponse<Information>>()
+    var mGetInformationLiveData = MutableLiveData<MyResponse<User>>()
 
-
-    fun getTransactions(){
-
-        val disposable=informationRepository.getTransactions()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({response->
-
-                when(response.code()){
-                    200->{mGetInformationLiveData.value= response.body()?.let { information ->
-                        MyResponse.success(
-                            information
-                        )
+    fun getTransactions() {
+        launch(Dispatchers.Main) {
+            val response = runCatching { informationRepository.getInformationFromServer() }
+            response.onSuccess {
+                when (it.code()) {
+                    200 -> {
+                        mGetInformationLiveData.value = MyResponse.success(it.body()!!)
                     }
+                    else -> {
                     }
                 }
-
-            },{
-
-                val x=1
-
-            })
-        mCompositeDisposable.add(disposable)
+            }
+            response.onFailure {
+                mGetInformationLiveData.value = MyResponse.failed(it)
+            }
+        }
+    }
+    override fun onCleared() {
+        super.onCleared()
+        mCompositeDisposable.clear()
     }
 }

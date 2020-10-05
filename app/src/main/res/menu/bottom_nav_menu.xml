@@ -4,16 +4,16 @@
     <item
         android:id="@+id/navigation_contacts"
         android:icon="@drawable/icon_main_contacts"
-        android:title="@string/title_contacts" />
+        android:title="EMPTY" />
 
     <item
         android:id="@+id/navigation_transaction"
         android:icon="@drawable/icon_main_transaction"
-        android:title="@string/title_transaction" />
+        android:title="LIST" />
 
     <item
         android:id="@+id/navigation_setting"
         android:icon="@drawable/icon_main_setting"
-        android:title="@string/title_setting"/>
+        android:title="EMPTY"/>
 
 </menu>
