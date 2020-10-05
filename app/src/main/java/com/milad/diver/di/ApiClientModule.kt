@@ -17,7 +17,7 @@ import javax.inject.Singleton
 class ApiClientModule {
 
     @Provides
-    fun provideBaseUrl() = "https://thereportoftheweek-api.herokuapp.com/"
+    fun provideBaseUrl() = "https://api.stackexchange.com/"
 
     @Provides
     @Singleton

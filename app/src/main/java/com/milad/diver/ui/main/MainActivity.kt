@@ -1,5 +1,8 @@
 package com.milad.diver.ui.main
 
+import android.content.Context
+import android.preference.PreferenceManager
+import android.provider.Settings
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -8,6 +11,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.milad.diver.R
 import com.milad.diver.ui.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
+import java.security.AccessController.getContext
+import java.util.*
+
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {

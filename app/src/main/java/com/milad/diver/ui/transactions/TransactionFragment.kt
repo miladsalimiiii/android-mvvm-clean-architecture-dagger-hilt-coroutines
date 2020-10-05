@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.milad.diver.R
-import com.milad.diver.data.model.Information
+import com.milad.diver.data.model.Item
+import com.milad.diver.data.model.User
 import com.milad.diver.data.model.common.Status
 import com.milad.diver.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_transaction.*
 class TransactionFragment : BaseFragment() {
 
     private val mTransactionViewModel: TransactionViewModel by viewModels()
-    private lateinit var mTransactionsList: List<Information>
+    private lateinit var mTransactionsList: List<Item>
     private lateinit var mLinearLayoutManager: LinearLayoutManager
     private var mAdapter = TransactionListAdapter(ArrayList())
 
@@ -44,32 +45,12 @@ class TransactionFragment : BaseFragment() {
 
     }
 
-    private fun fixAmountAndProfileAvatar(information:Information){
-
-       // appCompatView_transaction_balance.text=information.mBalance.toString()
-        setAvatar(information)
-    }
-
-    private fun setAvatar(information:Information){
-
-        Glide.with(this)
-            .load(information.mId)
-            .error(R.drawable.icon_all_emptyprofilepicture)
-            .apply(RequestOptions.circleCropTransform())
-            .into(imageview_transaction_profile)
-    }
-
     override fun initObservers() {
-
-
         mTransactionViewModel.mGetInformationLiveData.observe(this, Observer {
-
             when (it.status) {
-
                 Status.SUCCESS -> {
-                    mTransactionsList = it.data?.toList()!!
+                    mTransactionsList = it.data?.mItems!!
                     mAdapter.updateData(mTransactionsList)
-                    //fixAmountAndProfileAvatar(it.data!!)
                 }
             }
         })
@@ -94,10 +75,5 @@ class TransactionFragment : BaseFragment() {
                 }
         }
         recyclerview_transaction_transactionsList.addItemDecoration(dividerItemDecoration)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-       // mTransactionViewModel.onCleared()
     }
 }

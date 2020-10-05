@@ -1,18 +1,15 @@
 package com.milad.diver.data.repository
 
 
-import com.milad.diver.data.model.Information
+import com.milad.diver.data.model.User
 import com.milad.diver.data.webservice.ApiInterface
-import io.reactivex.Single
 import retrofit2.Response
 import javax.inject.Inject
 
-private const val HEADER =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDE5NzEyNjgsInVzZXJfaWQiOjJ9.cSqUlrHqHu7teDlflMMc-ihRqsnpWszPdtlBemN0AlA"
 
- class InformationRepositoryImle @Inject constructor(var apiInterface: ApiInterface):InformationRepository{
+class InformationRepositoryImle @Inject constructor(var apiInterface: ApiInterface):InformationRepository{
 
-     override fun getInformationFromServer(): Single<Response<Array<Information>>> {
+     override suspend fun getInformationFromServer(): Response<User> {
 
          return apiInterface.getInformation()
      }

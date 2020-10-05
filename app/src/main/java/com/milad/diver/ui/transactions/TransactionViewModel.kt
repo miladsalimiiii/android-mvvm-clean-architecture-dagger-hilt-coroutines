@@ -2,88 +2,38 @@ package com.milad.diver.ui.transactions
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
-import com.milad.diver.data.model.Information
+import com.milad.diver.data.model.User
 import com.milad.diver.data.model.common.MyResponse
 import com.milad.diver.data.repository.InformationRepositoryImle
 import com.milad.diver.ui.base.BaseViewModel
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
 class TransactionViewModel @ViewModelInject constructor(
-    var informationRepository: InformationRepositoryImle
-) : BaseViewModel() {
+   private var informationRepository: InformationRepositoryImle
+) : BaseViewModel() , CoroutineScope by MainScope(){
 
-    var mGetInformationLiveData = MutableLiveData<MyResponse<Array<Information>>>()
+    var mGetInformationLiveData = MutableLiveData<MyResponse<User>>()
 
     fun getTransactions() {
-
-       // if (utilInternetConnection.isInternetAvailable()) {
-            val disposable = informationRepository.getInformationFromServer()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ response ->
-                    when (response.code()) {
-                        200 -> {
-                           // response.body()?.let { insertInformationIntoDB(it) }
-                            mGetInformationLiveData.value = MyResponse.success(response.body()!!)
-                        }
+        launch(Dispatchers.Main) {
+            val response = runCatching { informationRepository.getInformationFromServer() }
+            response.onSuccess {
+                when (it.code()) {
+                    200 -> {
+                        mGetInformationLiveData.value = MyResponse.success(it.body()!!)
                     }
-                }, {
-                    mGetInformationLiveData.value = MyResponse.failed(it)
-                })
-            mCompositeDisposable.add(disposable)
-     //   } else {
-//            val disposable = informationRepository.getInformationFromDB()
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe({
-//                   // getTransactionFromDB(it)
-//                }, {
-//
-//                })
-//            mCompositeDisposable.add(disposable)
+                    else -> {
+                    }
+                }
+            }
+            response.onFailure {
+                mGetInformationLiveData.value = MyResponse.failed(it)
+            }
         }
-   // }
-
-//    private fun insertInformationIntoDB(information: Information) {
-//        val disposable = informationRepository.insertInformationToDB(information)
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe({
-//                insertTransactionIntoDB(information)
-//            }, {
-//                mGetInformationLiveData.value = MyResponse.failed(it)
-//            })
-//        mCompositeDisposable.add(disposable)
-//    }
-
-//    private fun insertTransactionIntoDB(information: Information) {
-//        val disposable = information.mTransactions?.let {
-//            informationRepository.insertTransactionListToDB(it)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe({
-//                    mGetInformationLiveData.value = MyResponse.success(information)
-//                }, {
-//                    mGetInformationLiveData.value = MyResponse.failed(it)
-//                })
-//        }
-//        disposable?.let { mCompositeDisposable.add(it) }
-//    }
-
-//    private fun getTransactionFromDB(information: Information) {
-//        val disposable = informationRepository.getTransactionsFromDB()
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe({
-//                information.mTransactions = it
-//                mGetInformationLiveData.value = MyResponse.success(information)
-//            }, {
-//
-//            })
-//        mCompositeDisposable.add(disposable)
-//    }
-
+    }
     override fun onCleared() {
         super.onCleared()
         mCompositeDisposable.clear()

@@ -6,127 +6,25 @@
     android:layout_marginBottom="4dp">
 
     <ImageView
-        android:id="@+id/imageView_transaction_item"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView_transaction_lableName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginRight="6dp"
-        android:text="میلاد سلیمی"
-        android:textAppearance="@style/B2"
-        android:textColor="@color/colorText"
-        app:layout_constraintEnd_toStartOf="@+id/imageView_transaction_item"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView_transaction_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:text="پرداخت شده است"
-        android:textAppearance="@style/B1"
-        android:textColor="@color/colorTextDark"
-        app:layout_constraintEnd_toStartOf="@+id/textView_transaction_lableName"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView_transaction_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:text="از شما"
-        android:textAppearance="@style/B2"
-        android:textColor="@color/colorTextHint"
-        app:layout_constraintEnd_toStartOf="@+id/textView_transaction_name"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/textView_transaction_detail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginRight="6dp"
-        android:text="بابت شام دیشب"
-        android:textAppearance="@style/B3"
-        android:textColor="@color/colorTextLight"
-        app:layout_constraintEnd_toStartOf="@+id/imageView_transaction_item"
-        app:layout_constraintTop_toBottomOf="@id/textView_transaction_name" />
-
-    <TextView
-        android:id="@+id/textView_transaction_plus"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginTop="4dp"
-        android:text="+"
-        android:textAppearance="@style/H2"
-        android:textColor="@color/colorTextPositive"
-        app:layout_constraintStart_toStartOf="@id/textView_transaction_currency"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-
-    <TextView
-        android:id="@+id/textView_transaction_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginTop="4dp"
-        android:text="250000"
-        android:textAppearance="@style/H2"
-        android:textColor="@color/colorTextPositive"
-        app:layout_constraintStart_toEndOf="@id/textView_transaction_plus"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView_transaction_currency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:text="تومان"
-        android:textAppearance="@style/B3"
-        android:textColor="@color/colorTextLightest"
+        android:id="@+id/imageView_profile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_transaction_amount" />
-
-    <TextView
-        android:id="@+id/textView_transaction_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="3dp"
-        android:text="12:00"
-        android:textAppearance="@style/B3"
-        android:textColor="@color/colorTextLight"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_transaction_currency" />
-
-    <TextView
-        android:id="@+id/textView_transaction_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="3dp"
-        android:text="12 بهمن 57"
-        android:textAppearance="@style/B3"
-        android:textColor="@color/colorTextLight"
-        app:layout_constraintStart_toEndOf="@+id/textView_transaction_time"
-        app:layout_constraintTop_toBottomOf="@id/textView_transaction_currency" />
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/textView_userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/imageView_profile"
+        android:text="12321321"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
