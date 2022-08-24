@@ -1,13 +1,16 @@
 package com.milad.diver.common
 
+import android.app.Application
+import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.facebook.stetho.Stetho
 import dagger.hilt.android.HiltAndroidApp
 
 
 @HiltAndroidApp
-class MyApplication : MultiDexApplication() {
+class MyApplication : Application() {
 
     companion object {
         private var sInstance = MyApplication()
@@ -21,18 +24,11 @@ class MyApplication : MultiDexApplication() {
         Stetho.initializeWithDefaults(this)
         sInstance = this
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-//        startKoin {
-//            androidLogger()
-//            androidContext(this@MyApplication)
-//            modules(
-//                listOf(
-//                    apiModule,
-//                    databaseModule,
-//                    repositoryModule,
-//                    viewModelModule,
-//                    utilModule
-//                    )
-//            )
-//        }
+        MultiDex.install(this)
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
     }
 }

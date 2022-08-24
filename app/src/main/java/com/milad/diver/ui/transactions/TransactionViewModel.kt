@@ -1,17 +1,19 @@
 package com.milad.diver.ui.transactions
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.milad.diver.data.model.User
 import com.milad.diver.data.model.common.MyResponse
 import com.milad.diver.data.repository.InformationRepositoryImle
 import com.milad.diver.ui.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TransactionViewModel @ViewModelInject constructor(
+@HiltViewModel
+class TransactionViewModel @Inject constructor(
    private var informationRepository: InformationRepositoryImle
 ) : BaseViewModel() , CoroutineScope by MainScope(){
 
